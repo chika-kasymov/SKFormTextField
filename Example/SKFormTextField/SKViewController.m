@@ -7,9 +7,10 @@
 //
 
 #import "SKViewController.h"
+#import <SKFormTextField/SKFormTextField.h>
 
 @interface SKViewController ()
-
+@property (weak, nonatomic) IBOutlet SKFormTextField *textField;
 @end
 
 @implementation SKViewController
@@ -17,7 +18,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning

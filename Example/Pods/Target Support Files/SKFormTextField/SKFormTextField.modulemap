@@ -1,0 +1,6 @@
+framework module SKFormTextField {
+  umbrella header "SKFormTextField-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -23,6 +23,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
 		B65C9E52C72A287F8BDFDFE3 /* Pods_SKFormTextField_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93687FC85003B605527B8988 /* Pods_SKFormTextField_Example.framework */; };
+		C78FF4D11C44EE4F0048F210 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C78FF4D01C44EE4F0048F210 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		B046D5F81817A9A45B5EB63A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		B11A74DA8B4BB65C67B420E0 /* Pods-SKFormTextField_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFormTextField_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKFormTextField_Example/Pods-SKFormTextField_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		C065F1E7877E279AC1690B3A /* Pods-SKFormTextField_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SKFormTextField_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SKFormTextField_Tests/Pods-SKFormTextField_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		C78FF4D01C44EE4F0048F210 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				6003F59C195388D20070C39A /* SKAppDelegate.h */,
 				6003F59D195388D20070C39A /* SKAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
+				C78FF4D01C44EE4F0048F210 /* LaunchScreen.storyboard */,
 				6003F5A5195388D20070C39A /* SKViewController.h */,
 				6003F5A6195388D20070C39A /* SKViewController.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
@@ -277,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
+				C78FF4D11C44EE4F0048F210 /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
@@ -512,10 +516,10 @@
 			baseConfigurationReference = B11A74DA8B4BB65C67B420E0 /* Pods-SKFormTextField_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SKFormTextField/SKFormTextField-Prefix.pch";
 				INFOPLIST_FILE = "SKFormTextField/SKFormTextField-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -528,10 +532,10 @@
 			baseConfigurationReference = 8389EB73A5B8D2E8606462A2 /* Pods-SKFormTextField_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SKFormTextField/SKFormTextField-Prefix.pch";
 				INFOPLIST_FILE = "SKFormTextField/SKFormTextField-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

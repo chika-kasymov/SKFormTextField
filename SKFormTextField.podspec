@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = "SKFormTextField"
   s.version          = "0.1.0"
-  s.summary          = "A short description of SKFormTextField."
+  s.summary          = "Custom UITextField with additional actions buttons, descriptions and validation"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -22,11 +22,11 @@ Pod::Spec.new do |s|
   s.homepage         = "https://github.com/<GITHUB_USERNAME>/SKFormTextField"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
-  s.author           = { "Shyngys Kassymov" => "skassymov@crystalspring.kz" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/SKFormTextField.git", :tag => s.version.to_s }
+  s.author           = { "Shyngys Kassymov" => "chika.kasymov@gmail.com" }
+  s.source           = { :git => "https://github.com/chika/SKFormTextField.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'

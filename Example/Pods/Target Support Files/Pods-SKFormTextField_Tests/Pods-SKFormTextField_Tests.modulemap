@@ -1,0 +1,6 @@
+framework module Pods_SKFormTextField_Tests {
+  umbrella header "Pods-SKFormTextField_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -5,11 +5,17 @@
 [![License](https://img.shields.io/cocoapods/l/SKFormTextField.svg?style=flat)](http://cocoapods.org/pods/SKFormTextField)
 [![Platform](https://img.shields.io/cocoapods/p/SKFormTextField.svg?style=flat)](http://cocoapods.org/pods/SKFormTextField)
 
+## Description
+
+SKFormTextField is a custom UIControl which has additional action buttons, description texts and validation to extend UITextField functionality.
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+
+Deploment target >= iOS 8.0
 
 ## Installation
 
@@ -22,7 +28,7 @@ pod "SKFormTextField"
 
 ## Author
 
-Shyngys Kassymov, skassymov@crystalspring.kz
+Shyngys Kassymov, chika.kasymov@gmail.com
 
 ## License
 
