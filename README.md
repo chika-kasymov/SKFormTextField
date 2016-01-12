@@ -15,7 +15,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-Deploment target >= iOS 8.0
+Deployment target >= iOS 8.0, Xcode version 7.2 (didn't test on previous versions)
 
 ## Installation
 
