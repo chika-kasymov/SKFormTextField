@@ -1,6 +1,6 @@
 # SKFormTextField
 
-[![CI Status](http://img.shields.io/travis/Shyngys Kassymov/SKFormTextField.svg?style=flat)](https://travis-ci.org/Shyngys Kassymov/SKFormTextField)
+[![CI Status](http://img.shields.io/travis/chika-kasymov/SKFormTextField.svg?style=flat)](https://travis-ci.org/chika-kasymov/SKFormTextField)
 [![Version](https://img.shields.io/cocoapods/v/SKFormTextField.svg?style=flat)](http://cocoapods.org/pods/SKFormTextField)
 [![License](https://img.shields.io/cocoapods/l/SKFormTextField.svg?style=flat)](http://cocoapods.org/pods/SKFormTextField)
 [![Platform](https://img.shields.io/cocoapods/p/SKFormTextField.svg?style=flat)](http://cocoapods.org/pods/SKFormTextField)
