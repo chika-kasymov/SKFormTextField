@@ -1,4 +1,4 @@
 language: objective-c
 script:
   - xctool -workspace Example/SKFormTextField.xcworkspace -scheme SKFormTextField-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-  - xctool test -workspace Example/SKFormTextField.xcworkspace -scheme SKFormTextField-Tests -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xctool test -workspace Example/SKFormTextField.xcworkspace -scheme SKFormTextField-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
