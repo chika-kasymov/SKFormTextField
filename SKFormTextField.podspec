@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = "SKFormTextField"
-  s.version          = "0.1.0"
-  s.summary          = "In development process"
+  s.version          = "0.2.0"
+  s.summary          = "Custom UITextField/UITextView container with form validation, description text and more"
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
