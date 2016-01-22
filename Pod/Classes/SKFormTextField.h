@@ -61,29 +61,6 @@ typedef enum SKFormTextFieldState:NSInteger {
 
 @end
 
-/**
- The SKFormTextFieldDelegate protocol needed to properly update UITableView when UITextView changes it's height.
-
- To correctly update UITableViewCell:
- 
- 1. You need to call [self.tableView beginUpdates]; in willUpdateTextViewHeight delegate method, to begin updates
- 
- 2. You need to call [self.tableView endUpdates]; in didUpdateTextViewHeight delegate method, to finish updates
- */
-@protocol SKFormTextFieldDelegate <NSObject>
-
-@required
-- (void)willUpdateTextViewHeight:(UITextView *)textView;
-- (void)didUpdateTextViewHeight:(UITextView *)textView;
-
-@optional
-- (void)skTextFieldWillBeginEditing:(UITextField *)textField;
-- (void)skTextFieldDidBeginEditing:(UITextField *)textField;
-- (void)skTextFieldWillEndEditing:(UITextField *)textField;
-- (void)skTextFieldDidEndEditing:(UITextField *)textField;
-
-@end
-
 #pragma mark - SKFormTextField
 #pragma mark -
 
@@ -98,7 +75,7 @@ typedef enum SKFormTextFieldState:NSInteger {
  This class customizable in most parts and license free, so enjoy using it!
  */
 
-typedef void (^TextFieldDidEndEditingBlock)();
+typedef void (^TextFieldDidEndEditingBlock)(NSString*);
 
 IB_DESIGNABLE
 
@@ -131,8 +108,7 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable BOOL doNotHideLineWhenRead;
 @property (nonatomic) IBInspectable CGFloat textViewHeight;
 
-@property id <SKFormTextFieldDataSource> dataSource;
-@property id <SKFormTextFieldDelegate> delegate;
+@property (weak) id <SKFormTextFieldDataSource> dataSource;
 @property (readwrite, copy) TextFieldDidEndEditingBlock textFieldDidEndEditingBlock;
 @property (readwrite, copy) TextFieldDidEndEditingBlock textViewDidEndEditingBlock;
 

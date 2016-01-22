@@ -14,7 +14,7 @@
 #define VALID_COLOR NORMAL_COLOR
 #define ERROR_COLOR [UIColor colorWithRed:219/255.0 green:68/255.0 blue:55/255.0 alpha:1.0]
 
-@interface SKFormTextField () <UITextFieldDelegate, UITextViewDelegate>
+@interface SKFormTextField ()
 
 @end
 
@@ -81,7 +81,10 @@
         }
         if (!self.textField) {
             self.textField = [UITextField new];
-            self.textField.delegate = self;
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidBeginEditing:) name:UITextFieldTextDidBeginEditingNotification object:nil];
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidEndEditing:) name:UITextFieldTextDidEndEditingNotification object:nil];
+            
             self.textField.font = [UIFont fontWithName:@"Roboto-Regular" size:14];
             self.textField.placeholder = self.placeholderText;
             [self addSubview:self.textField];
@@ -98,7 +101,9 @@
         }
         if (!self.textView) {
             self.textView = [SKTextView new];
-            self.textView.delegate = self;
+            
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidEndEditing:) name:UITextViewTextDidEndEditingNotification object:nil];
+            
             self.textView.font = [UIFont fontWithName:@"Roboto-Regular" size:14];
             self.textView.placeholderText = self.placeholderText;
             [self addSubview:self.textView];
@@ -711,6 +716,12 @@
     self.descriptionLabel.preferredMaxLayoutWidth = self.descriptionLabel.frame.size.width;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidBeginEditingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidEndEditingNotification object:nil];
+}
+
 #pragma mark - Methods
 #pragma mark -
 
@@ -718,22 +729,22 @@
     self.type = type;
     
     if (animated) {
-//        [UIView animateWithDuration:0.345 delay:0 usingSpringWithDamping:1.0 initialSpringVelocity:0.5 options:0 animations:^{
-            if (type == SKFormTextFieldTypeTextField) {
-                self.textView.hidden = YES;
-                self.textField.hidden = NO;
-                self.textField.inputView = nil;
-            } else if (type == SKFormTextFieldTypeTextFieldDate) {
-                self.textView.hidden = YES;
-                self.textField.hidden = NO;
-                self.textField.inputView = self.datePicker;
-            } else if (type == SKFormTextFieldTypeTextView) {
-                self.textField.hidden = YES;
-                self.textView.hidden = NO;
-            }
-//        } completion:^(BOOL finished) {
-//            
-//        }];
+        if (type == SKFormTextFieldTypeTextField) {
+            self.textView.hidden = YES;
+            self.textField.hidden = NO;
+            self.textField.inputView = nil;
+        } else if (type == SKFormTextFieldTypeTextFieldDate) {
+            self.textView.hidden = YES;
+            self.textField.hidden = NO;
+            self.textField.inputView = self.datePicker;
+        } else if (type == SKFormTextFieldTypeTextView) {
+            self.textField.hidden = YES;
+            self.textView.hidden = NO;
+        }
+        
+        [UIView animateWithDuration:0.345 delay:0 usingSpringWithDamping:1.0 initialSpringVelocity:0.5 options:0 animations:^{
+            [self layoutIfNeeded];
+        } completion:nil];
     } else {
         if (type == SKFormTextFieldTypeTextField) {
             self.textView.hidden = YES;
@@ -1018,84 +1029,41 @@
     [self checkTextFieldState];
 }
 
-#pragma mark - UITextFieldDelegate
+#pragma mark - UITextFieldDelegate Observers
 #pragma mark -
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-//    if ([self.delegate respondsToSelector:@selector(skTextFieldWillBeginEditing:)]) {
-//        [self.delegate skTextFieldWillBeginEditing:textField];
-//    }
+- (void)textFieldDidBeginEditing:(NSNotification *)notification {
+    UITextField *textField = [notification object];
     
-    self.textFieldState = SKFormTextFieldStateActive;
-    [self configureTextFieldForCurrentState];
-    
-//    if ([self.delegate respondsToSelector:@selector(skTextFieldDidBeginEditing:)]) {
-//        [self.delegate skTextFieldDidBeginEditing:textField];
-//    }
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-//    if ([self.delegate respondsToSelector:@selector(skTextFieldWillEndEditing:)]) {
-//        [self.delegate skTextFieldWillEndEditing:textField];
-//    }
-    
-    self.textFieldState = [self textFieldIsValid] ? SKFormTextFieldStateValid : SKFormTextFieldStateInvalid;
-    [self configureTextFieldForCurrentState];
-    
-//    if ([self.delegate respondsToSelector:@selector(skTextFieldDidEndEditing:)]) {
-//        [self.delegate skTextFieldDidEndEditing:textField];
-//    }
-    
-    if (self.textFieldDidEndEditingBlock) {
-        self.textFieldDidEndEditingBlock();
+    if (self.textField == textField) {
+        self.textFieldState = SKFormTextFieldStateActive;
+        [self configureTextFieldForCurrentState];
     }
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
+- (void)textFieldDidEndEditing:(NSNotification *)notification {
+    UITextField *textField = [notification object];
     
-    return false;
+    if (self.textField == textField) {
+        self.textFieldState = [self textFieldIsValid] ? SKFormTextFieldStateValid : SKFormTextFieldStateInvalid;
+        [self configureTextFieldForCurrentState];
+        
+        if (self.textFieldDidEndEditingBlock) {
+            self.textFieldDidEndEditingBlock(textField.text);
+        }
+    }
 }
 
-#pragma mark - UITextViewDelegate
+#pragma mark - UITextViewDelegate Observers
 #pragma mark -
 
-- (void)textViewDidChange:(UITextView *)textView {
-//    // start to update superview if needed in delegate
-//    if ([self.delegate respondsToSelector:@selector(willUpdateTextViewHeight:)]) {
-//        [self.delegate willUpdateTextViewHeight:textView];
-//    }
-//    
-//    // calculate height
-//    CGFloat maxHeight = 100;
-//    CGFloat fixedWidth = textView.frame.size.width;
-//    CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
-//    CGRect newFrame = textView.frame;
-//    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), fminf(newSize.height, maxHeight));
-//    
-//    // update height constraint
-//    if (self.textFieldHeightConstraint) {
-//        [self removeConstraint:self.textFieldHeightConstraint];
-//    }
-//    self.textFieldHeightConstraint =
-//    [NSLayoutConstraint constraintWithItem:self.textField
-//                                 attribute:NSLayoutAttributeHeight
-//                                 relatedBy:NSLayoutRelationEqual
-//                                    toItem:nil
-//                                 attribute:NSLayoutAttributeNotAnAttribute
-//                                multiplier:1.0
-//                                  constant:newFrame.size.height];
-//    [self addConstraint:self.textFieldHeightConstraint];
-//
-//    // finish update superview if needed in delegate
-//    if ([self.delegate respondsToSelector:@selector(didUpdateTextViewHeight:)]) {
-//        [self.delegate didUpdateTextViewHeight:textView];
-//    }
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView {
-    if (self.textViewDidEndEditingBlock) {
-        self.textViewDidEndEditingBlock();
+- (void)textViewDidEndEditing:(NSNotification *)notification {
+    UITextView *textView = [notification object];
+    
+    if (self.textView == textView) {
+        if (self.textViewDidEndEditingBlock) {
+            self.textViewDidEndEditingBlock(textView.text);
+        }
     }
 }
 
