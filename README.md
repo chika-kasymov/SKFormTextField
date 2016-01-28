@@ -26,6 +26,17 @@ it, simply add the following line to your Podfile:
 pod "SKFormTextField"
 ```
 
+## Customization
+
+You can specify own styling to all instances of SKFormTextField. For example:
+
+```objective-c
+[SKFormTextField appearance].lineActiveColor = [UIColor appGreenColor];
+[SKFormTextField appearance].descriptionActiveColor = [UIColor appGreenColor];
+[SKFormTextField appearance].lineErrorColor = [UIColor appRedColor];
+[SKFormTextField appearance].descriptionErrorColor = [UIColor appRedColor];
+```
+
 ## Author
 
 Shyngys Kassymov, chika.kasymov@gmail.com
