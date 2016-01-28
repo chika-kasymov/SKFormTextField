@@ -582,13 +582,13 @@
                                         toItem:nil
                                      attribute:NSLayoutAttributeNotAnAttribute
                                     multiplier:1.0
-                                      constant:2];
+                                      constant:(self.hideLine ? 0 : 2)];
         
         // reduce margin between line and description to prevent description text from hiding
         if (self.descriptionToLineConstraint) {
             [self removeConstraint:self.descriptionToLineConstraint];
         }
-        self.descriptionToLineConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.line attribute:NSLayoutAttributeBottom multiplier:1.0 constant:3];
+        self.descriptionToLineConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.line attribute:NSLayoutAttributeBottom multiplier:1.0 constant:(self.hideLine ? 0 : 3)];
         
         [self addConstraints:@[self.descriptionToLineConstraint, self.lineHeightConstraint]];
         
@@ -618,13 +618,13 @@
                                         toItem:nil
                                      attribute:NSLayoutAttributeNotAnAttribute
                                     multiplier:1.0
-                                      constant:1];
+                                      constant:(self.hideLine ? 0 : 1)];
         
         // reduce margin between line and description to prevent description text from hiding
         if (self.descriptionToLineConstraint) {
             [self removeConstraint:self.descriptionToLineConstraint];
         }
-        self.descriptionToLineConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.line attribute:NSLayoutAttributeBottom multiplier:1.0 constant:4];
+        self.descriptionToLineConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.line attribute:NSLayoutAttributeBottom multiplier:1.0 constant:(self.hideLine ? 0 : 4)];
         
         [self addConstraints:@[self.descriptionToLineConstraint, self.lineHeightConstraint]];
         
@@ -654,13 +654,13 @@
                                         toItem:nil
                                      attribute:NSLayoutAttributeNotAnAttribute
                                     multiplier:1.0
-                                      constant:2];
+                                      constant:(self.hideLine ? 0 : 2)];
         
         // reduce margin between line and description to prevent description text from hiding
         if (self.descriptionToLineConstraint) {
             [self removeConstraint:self.descriptionToLineConstraint];
         }
-        self.descriptionToLineConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.line attribute:NSLayoutAttributeBottom multiplier:1.0 constant:3];
+        self.descriptionToLineConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.line attribute:NSLayoutAttributeBottom multiplier:1.0 constant:(self.hideLine ? 0 : 3)];
         
         [self addConstraints:@[self.descriptionToLineConstraint, self.lineHeightConstraint]];
         
@@ -688,13 +688,13 @@
                                         toItem:nil
                                      attribute:NSLayoutAttributeNotAnAttribute
                                     multiplier:1.0
-                                      constant:1];
+                                      constant:(self.hideLine ? 0 : 1)];
         
         // reduce margin between line and description to prevent description text from hiding
         if (self.descriptionToLineConstraint) {
             [self removeConstraint:self.descriptionToLineConstraint];
         }
-        self.descriptionToLineConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.line attribute:NSLayoutAttributeBottom multiplier:1.0 constant:4];
+        self.descriptionToLineConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.line attribute:NSLayoutAttributeBottom multiplier:1.0 constant:(self.hideLine ? 0 : 4)];
         
         [self addConstraints:@[self.descriptionToLineConstraint, self.lineHeightConstraint]];
         

@@ -106,6 +106,7 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable BOOL rightIconHidden;
 @property (nonatomic) IBInspectable BOOL required;
 @property (nonatomic) IBInspectable BOOL doNotHideLineWhenRead;
+@property (nonatomic) IBInspectable BOOL hideLine;
 @property (nonatomic) IBInspectable CGFloat textViewHeight;
 
 @property (weak) id <SKFormTextFieldDataSource> dataSource;
