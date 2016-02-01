@@ -102,6 +102,7 @@
         if (!self.textView) {
             self.textView = [SKTextView new];
             
+            [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidBeginEditing:) name:UITextViewTextDidBeginEditingNotification object:nil];
             [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidEndEditing:) name:UITextViewTextDidEndEditingNotification object:nil];
             
             self.textView.font = [UIFont fontWithName:@"Roboto-Regular" size:14];
@@ -620,6 +621,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidBeginEditingNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidBeginEditingNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidEndEditingNotification object:nil];
 }
 
@@ -806,15 +808,27 @@
 #pragma mark -
 
 - (void)textFieldDidBeginEditing:(NSNotification *)notification {
+    if ([self.delegate respondsToSelector:@selector(textFieldDidBeginUpdates:)]) {
+        [self.delegate textFieldDidBeginUpdates:self];
+    }
+    
     UITextField *textField = [notification object];
     
     if (self.textField == textField) {
         self.textFieldState = SKFormTextFieldStateActive;
         [self configureTextFieldForCurrentState];
     }
+    
+    if ([self.delegate respondsToSelector:@selector(textFieldDidEndUpdates:)]) {
+        [self.delegate textFieldDidEndUpdates:self];
+    }
 }
 
 - (void)textFieldDidEndEditing:(NSNotification *)notification {
+    if ([self.delegate respondsToSelector:@selector(textFieldDidBeginUpdates:)]) {
+        [self.delegate textFieldDidBeginUpdates:self];
+    }
+    
     UITextField *textField = [notification object];
     
     if (self.textField == textField) {
@@ -825,18 +839,50 @@
             self.textFieldDidEndEditingBlock(textField.text);
         }
     }
+    
+    if ([self.delegate respondsToSelector:@selector(textFieldDidEndUpdates:)]) {
+        [self.delegate textFieldDidEndUpdates:self];
+    }
 }
 
 #pragma mark - UITextViewDelegate Observers
 #pragma mark -
 
-- (void)textViewDidEndEditing:(NSNotification *)notification {
+- (void)textViewDidBeginEditing:(NSNotification *)notification {
+    if ([self.delegate respondsToSelector:@selector(textFieldDidBeginUpdates:)]) {
+        [self.delegate textFieldDidBeginUpdates:self];
+    }
+    
     UITextView *textView = [notification object];
     
     if (self.textView == textView) {
+        self.textFieldState = SKFormTextFieldStateActive;
+        [self configureTextFieldForCurrentState];
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(textFieldDidEndUpdates:)]) {
+        [self.delegate textFieldDidEndUpdates:self];
+    }
+}
+
+- (void)textViewDidEndEditing:(NSNotification *)notification {
+    if ([self.delegate respondsToSelector:@selector(textFieldDidBeginUpdates:)]) {
+        [self.delegate textFieldDidBeginUpdates:self];
+    }
+    
+    UITextView *textView = [notification object];
+    
+    if (self.textView == textView) {
+        self.textFieldState = [self textFieldIsValid] ? SKFormTextFieldStateValid : SKFormTextFieldStateInvalid;
+        [self configureTextFieldForCurrentState];
+        
         if (self.textViewDidEndEditingBlock) {
             self.textViewDidEndEditingBlock(textView.text);
         }
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(textFieldDidEndUpdates:)]) {
+        [self.delegate textFieldDidEndUpdates:self];
     }
 }
 

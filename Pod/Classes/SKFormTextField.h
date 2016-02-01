@@ -51,6 +51,17 @@ typedef enum SKFormTextFieldState:NSInteger {
 @class SKFormTextField;
 
 /**
+ The SKFormTextFieldDelegate protocol provides methods to update other view on screen
+ */
+@protocol SKFormTextFieldDelegate <NSObject>
+
+@optional
+- (void)textFieldDidBeginUpdates:(SKFormTextField *)textField;
+- (void)textFieldDidEndUpdates:(SKFormTextField *)textField;
+
+@end
+
+/**
  The SKFormTextFieldDataSource protocol provides methods to text field validation and customization
  */
 @protocol SKFormTextFieldDataSource <NSObject>
@@ -109,6 +120,7 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable BOOL hideLine;
 @property (nonatomic) IBInspectable CGFloat textViewHeight;
 
+@property (weak) id <SKFormTextFieldDelegate> delegate;
 @property (weak) id <SKFormTextFieldDataSource> dataSource;
 @property (readwrite, copy) TextFieldDidEndEditingBlock textFieldDidEndEditingBlock;
 @property (readwrite, copy) TextFieldDidEndEditingBlock textViewDidEndEditingBlock;
