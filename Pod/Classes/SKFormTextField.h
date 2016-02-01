@@ -134,6 +134,15 @@ IB_DESIGNABLE
 @property (strong, nonatomic) NSLayoutConstraint *descriptionLabelLeftConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *descriptionLabelRightConstraint;
 
+@property (strong, nonatomic) NSLayoutConstraint *leftButtonWidthConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *leftButtonHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *rightButtonWidthConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *rightButtonHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *leftImageWidthConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *leftImageHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *rightImageWidthConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *rightImageHeightConstraint;
+
 @property (strong, nonatomic) UIImageView *leftDescriptionIcon;
 @property (strong, nonatomic) UIImageView *rightDescriptionIcon;
 

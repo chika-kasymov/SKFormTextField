@@ -153,7 +153,7 @@
         
         // left button
         self.leftButton.translatesAutoresizingMaskIntoConstraints = NO;
-        NSLayoutConstraint *leftButtonHeightConstaint =
+        self.leftButtonHeightConstraint =
         [NSLayoutConstraint constraintWithItem:self.leftButton
                                      attribute:NSLayoutAttributeHeight
                                      relatedBy:NSLayoutRelationEqual
@@ -161,7 +161,7 @@
                                      attribute:NSLayoutAttributeNotAnAttribute
                                     multiplier:1.0
                                       constant:24];
-        NSLayoutConstraint *leftButtonWidthConstaint =
+        self.leftButtonWidthConstraint =
         [NSLayoutConstraint constraintWithItem:self.leftButton
                                      attribute:NSLayoutAttributeWidth
                                      relatedBy:NSLayoutRelationEqual
@@ -185,7 +185,7 @@
                                      attribute:NSLayoutAttributeCenterY
                                     multiplier:1.0
                                       constant:0];
-        [self addConstraints:@[leftButtonHeightConstaint, leftButtonWidthConstaint, leftButtonLeftConstaint, leftButtonVerticalCenterConstaint]];
+        [self addConstraints:@[self.leftButtonHeightConstraint, self.leftButtonWidthConstraint, leftButtonLeftConstaint, leftButtonVerticalCenterConstaint]];
         
         // text field
         self.textField.translatesAutoresizingMaskIntoConstraints = NO;
@@ -213,9 +213,6 @@
                                      attribute:NSLayoutAttributeTop
                                     multiplier:1.0
                                       constant:0];
-        if (self.textFieldLeftConstraint) {
-            [self removeConstraint:self.textFieldLeftConstraint];
-        }
         self.textFieldLeftConstraint =
         [NSLayoutConstraint constraintWithItem:self.textField
                                      attribute:NSLayoutAttributeLeft
@@ -224,9 +221,6 @@
                                      attribute:NSLayoutAttributeRight
                                     multiplier:1.0
                                       constant:8];
-        if (self.textFieldRightConstraint) {
-            [self removeConstraint:self.textFieldRightConstraint];
-        }
         self.textFieldRightConstraint =
         [NSLayoutConstraint constraintWithItem:self.textField
                                      attribute:NSLayoutAttributeRight
@@ -275,7 +269,7 @@
         
         // right button
         self.rightButton.translatesAutoresizingMaskIntoConstraints = NO;
-        NSLayoutConstraint *rightButtonHeightConstaint =
+        self.rightButtonHeightConstraint =
         [NSLayoutConstraint constraintWithItem:self.rightButton
                                      attribute:NSLayoutAttributeHeight
                                      relatedBy:NSLayoutRelationEqual
@@ -283,7 +277,7 @@
                                      attribute:NSLayoutAttributeNotAnAttribute
                                     multiplier:1.0
                                       constant:24];
-        NSLayoutConstraint *rightButtonWidthConstaint =
+        self.rightButtonWidthConstraint =
         [NSLayoutConstraint constraintWithItem:self.rightButton
                                      attribute:NSLayoutAttributeWidth
                                      relatedBy:NSLayoutRelationEqual
@@ -307,7 +301,7 @@
                                      attribute:NSLayoutAttributeCenterY
                                     multiplier:1.0
                                       constant:0];
-        [self addConstraints:@[rightButtonHeightConstaint, rightButtonWidthConstaint, rightButtonLeftConstaint, rightButtonVerticalCenterConstaint]];
+        [self addConstraints:@[self.rightButtonHeightConstraint, self.rightButtonWidthConstraint, rightButtonLeftConstaint, rightButtonVerticalCenterConstaint]];
         
         // line
         self.line.translatesAutoresizingMaskIntoConstraints = NO;
@@ -327,9 +321,6 @@
                                      attribute:NSLayoutAttributeRight
                                     multiplier:1.0
                                       constant:0];
-        if (self.lineHeightConstraint) {
-            [self removeConstraint:self.lineHeightConstraint];
-        }
         self.lineHeightConstraint =
         [NSLayoutConstraint constraintWithItem:self.line
                                      attribute:NSLayoutAttributeHeight
@@ -342,7 +333,7 @@
         
         // left icon
         self.leftDescriptionIcon.translatesAutoresizingMaskIntoConstraints = NO;
-        NSLayoutConstraint *leftDescriptionIconHeightConstaint =
+        self.leftImageHeightConstraint =
         [NSLayoutConstraint constraintWithItem:self.leftDescriptionIcon
                                      attribute:NSLayoutAttributeHeight
                                      relatedBy:NSLayoutRelationEqual
@@ -350,7 +341,7 @@
                                      attribute:NSLayoutAttributeNotAnAttribute
                                     multiplier:1.0
                                       constant:18];
-        NSLayoutConstraint *leftDescriptionIconWidthConstaint =
+        self.leftImageWidthConstraint =
         [NSLayoutConstraint constraintWithItem:self.leftDescriptionIcon
                                      attribute:NSLayoutAttributeWidth
                                      relatedBy:NSLayoutRelationEqual
@@ -374,7 +365,7 @@
                                      attribute:NSLayoutAttributeCenterY
                                     multiplier:1.0
                                       constant:0];
-        [self addConstraints:@[leftDescriptionIconHeightConstaint, leftDescriptionIconWidthConstaint, leftDescriptionIconLeftConstaint, leftDescriptionIconVerticalCenterConstaint]];
+        [self addConstraints:@[self.leftImageHeightConstraint, self.leftImageWidthConstraint, leftDescriptionIconLeftConstaint, leftDescriptionIconVerticalCenterConstaint]];
         
         // description label
         self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = NO;
@@ -394,9 +385,6 @@
                                      attribute:NSLayoutAttributeBottom
                                     multiplier:1.0
                                       constant:0];
-        if (self.descriptionLabelLeftConstraint) {
-            [self removeConstraint:self.descriptionLabelLeftConstraint];
-        }
         self.descriptionLabelLeftConstraint =
         [NSLayoutConstraint constraintWithItem:self.descriptionLabel
                                      attribute:NSLayoutAttributeLeft
@@ -405,9 +393,6 @@
                                      attribute:NSLayoutAttributeRight
                                     multiplier:1.0
                                       constant:8];
-        if (self.descriptionLabelRightConstraint) {
-            [self removeConstraint:self.descriptionLabelRightConstraint];
-        }
         self.descriptionLabelRightConstraint =
         [NSLayoutConstraint constraintWithItem:self.descriptionLabel
                                      attribute:NSLayoutAttributeRight
@@ -420,7 +405,7 @@
         
         // right icon
         self.rightDescriptionIcon.translatesAutoresizingMaskIntoConstraints = NO;
-        NSLayoutConstraint *rightDescriptionIconHeightConstaint =
+        self.rightImageHeightConstraint =
         [NSLayoutConstraint constraintWithItem:self.rightDescriptionIcon
                                      attribute:NSLayoutAttributeHeight
                                      relatedBy:NSLayoutRelationEqual
@@ -428,7 +413,7 @@
                                      attribute:NSLayoutAttributeNotAnAttribute
                                     multiplier:1.0
                                       constant:18];
-        NSLayoutConstraint *rightDescriptionIconWidthConstaint =
+        self.rightImageWidthConstraint =
         [NSLayoutConstraint constraintWithItem:self.rightDescriptionIcon
                                      attribute:NSLayoutAttributeWidth
                                      relatedBy:NSLayoutRelationEqual
@@ -452,7 +437,7 @@
                                      attribute:NSLayoutAttributeCenterY
                                     multiplier:1.0
                                       constant:0];
-        [self addConstraints:@[rightDescriptionIconHeightConstaint, rightDescriptionIconWidthConstaint, rightDescriptionIconLeftConstaint, rightDescriptionIconVerticalCenterConstaint]];
+        [self addConstraints:@[self.rightImageHeightConstraint, self.rightImageWidthConstraint, rightDescriptionIconLeftConstaint, rightDescriptionIconVerticalCenterConstaint]];
         
         hasSetuped = YES;
     }
@@ -503,18 +488,7 @@
         [self showDescriptionIconAtSide:SKFormTextFieldSideRight];
     }
     
-    if (self.textFieldHeightConstraint) {
-        [self removeConstraint:self.textFieldHeightConstraint];
-    }
-    self.textFieldHeightConstraint =
-    [NSLayoutConstraint constraintWithItem:self.textField
-                                 attribute:NSLayoutAttributeHeight
-                                 relatedBy:NSLayoutRelationEqual
-                                    toItem:nil
-                                 attribute:NSLayoutAttributeNotAnAttribute
-                                multiplier:1.0
-                                  constant:self.textViewHeight];
-    [self addConstraint:self.textFieldHeightConstraint];
+    self.textFieldHeightConstraint.constant = self.textViewHeight;
     
     [self checkTextFieldState];
     
@@ -528,22 +502,7 @@
         }
         
         if (!self.doNotHideLineWhenRead) {
-            if (self.textFieldHeightConstraint) {
-                [self removeConstraint:self.textFieldHeightConstraint];
-            }
-            
-            if (self.lineHeightConstraint) {
-                [self removeConstraint:self.lineHeightConstraint];
-            }
-            self.lineHeightConstraint =
-            [NSLayoutConstraint constraintWithItem:self.line
-                                         attribute:NSLayoutAttributeHeight
-                                         relatedBy:NSLayoutRelationEqual
-                                            toItem:nil
-                                         attribute:NSLayoutAttributeNotAnAttribute
-                                        multiplier:1.0
-                                          constant:0];
-            [self addConstraint:self.lineHeightConstraint];
+            self.lineHeightConstraint.constant = 0;
         }
         
         self.line.hidden = !self.doNotHideLineWhenRead;
@@ -556,6 +515,8 @@
             self.textView.userInteractionEnabled = true;
         }
     }
+    
+    [self setNeedsUpdateConstraints];
 }
 
 - (void)prepareForInterfaceBuilder {
@@ -572,25 +533,10 @@
         
         // set line to active state
         self.line.backgroundColor = self.lineActiveColor;
-        if (self.lineHeightConstraint) {
-            [self removeConstraint:self.lineHeightConstraint];
-        }
-        self.lineHeightConstraint =
-        [NSLayoutConstraint constraintWithItem:self.line
-                                     attribute:NSLayoutAttributeHeight
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:nil
-                                     attribute:NSLayoutAttributeNotAnAttribute
-                                    multiplier:1.0
-                                      constant:(self.hideLine ? 0 : 2)];
+        self.lineHeightConstraint.constant = (self.hideLine ? 0 : 2);
         
         // reduce margin between line and description to prevent description text from hiding
-        if (self.descriptionToLineConstraint) {
-            [self removeConstraint:self.descriptionToLineConstraint];
-        }
-        self.descriptionToLineConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.line attribute:NSLayoutAttributeBottom multiplier:1.0 constant:(self.hideLine ? 0 : 3)];
-        
-        [self addConstraints:@[self.descriptionToLineConstraint, self.lineHeightConstraint]];
+        self.descriptionToLineConstraint.constant = (self.hideLine ? 0 : 3);
         
         // show normal icon if available
         if (self.rightDescriptionIcon) {
@@ -608,25 +554,10 @@
         
         // set line to normal state
         self.line.backgroundColor = self.lineNormalColor;
-        if (self.lineHeightConstraint) {
-            [self removeConstraint:self.lineHeightConstraint];
-        }
-        self.lineHeightConstraint =
-        [NSLayoutConstraint constraintWithItem:self.line
-                                     attribute:NSLayoutAttributeHeight
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:nil
-                                     attribute:NSLayoutAttributeNotAnAttribute
-                                    multiplier:1.0
-                                      constant:(self.hideLine ? 0 : 1)];
+        self.lineHeightConstraint.constant = (self.hideLine ? 0 : 1);
         
         // reduce margin between line and description to prevent description text from hiding
-        if (self.descriptionToLineConstraint) {
-            [self removeConstraint:self.descriptionToLineConstraint];
-        }
-        self.descriptionToLineConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.line attribute:NSLayoutAttributeBottom multiplier:1.0 constant:(self.hideLine ? 0 : 4)];
-        
-        [self addConstraints:@[self.descriptionToLineConstraint, self.lineHeightConstraint]];
+        self.descriptionToLineConstraint.constant = (self.hideLine ? 0 : 4);
         
         // show normal icon if available
         if (self.rightDescriptionIcon) {
@@ -644,25 +575,10 @@
         
         // set line to normal state
         self.line.backgroundColor = self.lineErrorColor;
-        if (self.lineHeightConstraint) {
-            [self removeConstraint:self.lineHeightConstraint];
-        }
-        self.lineHeightConstraint =
-        [NSLayoutConstraint constraintWithItem:self.line
-                                     attribute:NSLayoutAttributeHeight
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:nil
-                                     attribute:NSLayoutAttributeNotAnAttribute
-                                    multiplier:1.0
-                                      constant:(self.hideLine ? 0 : 2)];
+        self.lineHeightConstraint.constant = (self.hideLine ? 0 : 2);
         
         // reduce margin between line and description to prevent description text from hiding
-        if (self.descriptionToLineConstraint) {
-            [self removeConstraint:self.descriptionToLineConstraint];
-        }
-        self.descriptionToLineConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.line attribute:NSLayoutAttributeBottom multiplier:1.0 constant:(self.hideLine ? 0 : 3)];
-        
-        [self addConstraints:@[self.descriptionToLineConstraint, self.lineHeightConstraint]];
+        self.descriptionToLineConstraint.constant = (self.hideLine ? 0 : 3);
         
         // show error icon
         if (self.errorImage) {
@@ -678,25 +594,10 @@
         
         // set line to normal state
         self.line.backgroundColor = self.lineNormalColor;
-        if (self.lineHeightConstraint) {
-            [self removeConstraint:self.lineHeightConstraint];
-        }
-        self.lineHeightConstraint =
-        [NSLayoutConstraint constraintWithItem:self.line
-                                     attribute:NSLayoutAttributeHeight
-                                     relatedBy:NSLayoutRelationEqual
-                                        toItem:nil
-                                     attribute:NSLayoutAttributeNotAnAttribute
-                                    multiplier:1.0
-                                      constant:(self.hideLine ? 0 : 1)];
+        self.lineHeightConstraint.constant = (self.hideLine ? 0 : 1);
         
         // reduce margin between line and description to prevent description text from hiding
-        if (self.descriptionToLineConstraint) {
-            [self removeConstraint:self.descriptionToLineConstraint];
-        }
-        self.descriptionToLineConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.line attribute:NSLayoutAttributeBottom multiplier:1.0 constant:(self.hideLine ? 0 : 4)];
-        
-        [self addConstraints:@[self.descriptionToLineConstraint, self.lineHeightConstraint]];
+        self.descriptionToLineConstraint.constant = (self.hideLine ? 0 : 4);
         
         // show normal icon if available
         if (self.rightDescriptionIcon) {
@@ -765,57 +666,25 @@
         self.leftButton.hidden = NO;
         self.rightButton.hidden = NO;
         
-        if (self.textFieldLeftConstraint) {
-            [self removeConstraint:self.textFieldLeftConstraint];
-        }
-        self.textFieldLeftConstraint = [NSLayoutConstraint constraintWithItem:self.textField
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.leftButton
-                                                                    attribute:NSLayoutAttributeRight
-                                                                   multiplier:1.0
-                                                                     constant:8];
+        self.textFieldLeftConstraint.constant = 8;
+        self.leftButtonWidthConstraint.constant = 24;
+        self.leftButtonHeightConstraint.constant = 24;
         
-        if (self.textFieldRightConstraint) {
-            [self removeConstraint:self.textFieldRightConstraint];
-        }
-        self.textFieldRightConstraint = [NSLayoutConstraint constraintWithItem:self.textField
-                                                                     attribute:NSLayoutAttributeRight
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:self.rightButton
-                                                                     attribute:NSLayoutAttributeLeft
-                                                                    multiplier:1.0
-                                                                      constant:-8];
-        
-        [self addConstraints:@[self.textFieldLeftConstraint, self.textFieldRightConstraint]];
+        self.textFieldRightConstraint.constant = -8;
+        self.rightButtonWidthConstraint.constant = 24;
+        self.rightButtonHeightConstraint.constant = 24;
     } else if (side == SKFormTextFieldSideLeft) {
         self.leftButton.hidden = NO;
         
-        if (self.textFieldLeftConstraint) {
-            [self removeConstraint:self.textFieldLeftConstraint];
-        }
-        self.textFieldLeftConstraint = [NSLayoutConstraint constraintWithItem:self.textField
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.leftButton
-                                                                    attribute:NSLayoutAttributeRight
-                                                                   multiplier:1.0
-                                                                     constant:8];
-        [self addConstraint:self.textFieldLeftConstraint];
+        self.textFieldLeftConstraint.constant = 8;
+        self.leftButtonWidthConstraint.constant = 24;
+        self.leftButtonHeightConstraint.constant = 24;
     } else if (side == SKFormTextFieldSideRight) {
         self.rightButton.hidden = NO;
         
-        if (self.textFieldRightConstraint) {
-            [self removeConstraint:self.textFieldRightConstraint];
-        }
-        self.textFieldRightConstraint = [NSLayoutConstraint constraintWithItem:self.textField
-                                                                     attribute:NSLayoutAttributeRight
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:self.rightButton
-                                                                     attribute:NSLayoutAttributeLeft
-                                                                    multiplier:1.0
-                                                                      constant:-8];
-        [self addConstraint:self.textFieldRightConstraint];
+        self.textFieldRightConstraint.constant = -8;
+        self.rightButtonWidthConstraint.constant = 24;
+        self.rightButtonHeightConstraint.constant = 24;
     }
 }
 
@@ -824,57 +693,25 @@
         self.leftButton.hidden = YES;
         self.rightButton.hidden = YES;
         
-        if (self.textFieldLeftConstraint) {
-            [self removeConstraint:self.textFieldLeftConstraint];
-        }
-        self.textFieldLeftConstraint = [NSLayoutConstraint constraintWithItem:self.textField
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                   multiplier:1.0
-                                                                     constant:0];
+        self.textFieldLeftConstraint.constant = 0;
+        self.leftButtonWidthConstraint.constant = 0;
+        self.leftButtonHeightConstraint.constant = 0;
         
-        if (self.textFieldRightConstraint) {
-            [self removeConstraint:self.textFieldRightConstraint];
-        }
-        self.textFieldRightConstraint = [NSLayoutConstraint constraintWithItem:self.textField
-                                                                    attribute:NSLayoutAttributeRight
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self
-                                                                    attribute:NSLayoutAttributeRight
-                                                                   multiplier:1.0
-                                                                     constant:0];
-        
-        [self addConstraints:@[self.textFieldLeftConstraint, self.textFieldRightConstraint]];
+        self.textFieldRightConstraint.constant = 0;
+        self.rightButtonWidthConstraint.constant = 0;
+        self.rightButtonHeightConstraint.constant = 0;
     } else if (side == SKFormTextFieldSideLeft) {
         self.leftButton.hidden = YES;
         
-        if (self.textFieldLeftConstraint) {
-            [self removeConstraint:self.textFieldLeftConstraint];
-        }
-        self.textFieldLeftConstraint = [NSLayoutConstraint constraintWithItem:self.textField
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                   multiplier:1.0
-                                                                     constant:0];
-        [self addConstraint:self.textFieldLeftConstraint];
+        self.textFieldLeftConstraint.constant = 0;
+        self.leftButtonWidthConstraint.constant = 0;
+        self.leftButtonHeightConstraint.constant = 0;
     } else if (side == SKFormTextFieldSideRight) {
         self.rightButton.hidden = YES;
         
-        if (self.textFieldRightConstraint) {
-            [self removeConstraint:self.textFieldRightConstraint];
-        }
-        self.textFieldRightConstraint = [NSLayoutConstraint constraintWithItem:self.textField
-                                                                     attribute:NSLayoutAttributeRight
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:self
-                                                                     attribute:NSLayoutAttributeRight
-                                                                    multiplier:1.0
-                                                                      constant:0];
-        [self addConstraint:self.textFieldRightConstraint];
+        self.textFieldRightConstraint.constant = 0;
+        self.rightButtonWidthConstraint.constant = 0;
+        self.rightButtonHeightConstraint.constant = 0;
     }
 }
 
@@ -883,57 +720,25 @@
         self.leftDescriptionIcon.hidden = NO;
         self.rightDescriptionIcon.hidden = NO;
         
-        if (self.descriptionLabelLeftConstraint) {
-            [self removeConstraint:self.descriptionLabelLeftConstraint];
-        }
-        self.descriptionLabelLeftConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.leftDescriptionIcon
-                                                                    attribute:NSLayoutAttributeRight
-                                                                   multiplier:1.0
-                                                                     constant:8];
+        self.descriptionLabelLeftConstraint.constant = 8;
+        self.leftImageWidthConstraint.constant = 18;
+        self.leftImageHeightConstraint.constant = 18;
         
-        if (self.descriptionLabelRightConstraint) {
-            [self removeConstraint:self.descriptionLabelRightConstraint];
-        }
-        self.descriptionLabelRightConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel
-                                                                     attribute:NSLayoutAttributeRight
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:self.rightDescriptionIcon
-                                                                     attribute:NSLayoutAttributeLeft
-                                                                    multiplier:1.0
-                                                                      constant:-8];
-        
-        [self addConstraints:@[self.descriptionLabelLeftConstraint, self.descriptionLabelRightConstraint]];
+        self.descriptionLabelRightConstraint.constant = -8;
+        self.rightImageWidthConstraint.constant = 18;
+        self.rightImageHeightConstraint.constant = 18;
     } else if (side == SKFormTextFieldSideLeft) {
         self.leftDescriptionIcon.hidden = NO;
         
-        if (self.descriptionLabelLeftConstraint) {
-            [self removeConstraint:self.descriptionLabelLeftConstraint];
-        }
-        self.descriptionLabelLeftConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self.leftDescriptionIcon
-                                                                    attribute:NSLayoutAttributeRight
-                                                                   multiplier:1.0
-                                                                     constant:8];
-        [self addConstraint:self.descriptionLabelLeftConstraint];
+        self.descriptionLabelLeftConstraint.constant = 8;
+        self.leftImageWidthConstraint.constant = 18;
+        self.leftImageHeightConstraint.constant = 18;
     } else if (side == SKFormTextFieldSideRight) {
         self.rightDescriptionIcon.hidden = NO;
         
-        if (self.descriptionLabelRightConstraint) {
-            [self removeConstraint:self.descriptionLabelRightConstraint];
-        }
-        self.descriptionLabelRightConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel
-                                                                     attribute:NSLayoutAttributeRight
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:self.rightDescriptionIcon
-                                                                     attribute:NSLayoutAttributeLeft
-                                                                    multiplier:1.0
-                                                                      constant:-8];
-        [self addConstraint:self.descriptionLabelRightConstraint];
+        self.descriptionLabelRightConstraint.constant = -8;
+        self.rightImageWidthConstraint.constant = 18;
+        self.rightImageHeightConstraint.constant = 18;
     }
 }
 
@@ -942,57 +747,25 @@
         self.leftDescriptionIcon.hidden = YES;
         self.rightDescriptionIcon.hidden = YES;
         
-        if (self.descriptionLabelLeftConstraint) {
-            [self removeConstraint:self.descriptionLabelLeftConstraint];
-        }
-        self.descriptionLabelLeftConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                   multiplier:1.0
-                                                                     constant:0];
+        self.descriptionLabelLeftConstraint.constant = 0;
+        self.leftImageWidthConstraint.constant = 0;
+        self.leftImageHeightConstraint.constant = 0;
         
-        if (self.descriptionLabelRightConstraint) {
-            [self removeConstraint:self.descriptionLabelRightConstraint];
-        }
-        self.descriptionLabelRightConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel
-                                                                     attribute:NSLayoutAttributeRight
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:self
-                                                                     attribute:NSLayoutAttributeRight
-                                                                    multiplier:1.0
-                                                                      constant:0];
-        
-        [self addConstraints:@[self.descriptionLabelLeftConstraint, self.descriptionLabelRightConstraint]];
+        self.descriptionLabelRightConstraint.constant = 0;
+        self.rightImageWidthConstraint.constant = 0;
+        self.rightImageHeightConstraint.constant = 0;
     } else if (side == SKFormTextFieldSideLeft) {
         self.leftDescriptionIcon.hidden = YES;
         
-        if (self.descriptionLabelLeftConstraint) {
-            [self removeConstraint:self.descriptionLabelLeftConstraint];
-        }
-        self.descriptionLabelLeftConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                    relatedBy:NSLayoutRelationEqual
-                                                                       toItem:self
-                                                                    attribute:NSLayoutAttributeLeft
-                                                                   multiplier:1.0
-                                                                     constant:0];
-        [self addConstraint:self.descriptionLabelLeftConstraint];
+        self.descriptionLabelLeftConstraint.constant = 0;
+        self.leftImageWidthConstraint.constant = 0;
+        self.leftImageHeightConstraint.constant = 0;
     } else if (side == SKFormTextFieldSideRight) {
         self.rightDescriptionIcon.hidden = YES;
         
-        if (self.descriptionLabelRightConstraint) {
-            [self removeConstraint:self.descriptionLabelRightConstraint];
-        }
-        self.descriptionLabelRightConstraint = [NSLayoutConstraint constraintWithItem:self.descriptionLabel
-                                                                     attribute:NSLayoutAttributeRight
-                                                                     relatedBy:NSLayoutRelationEqual
-                                                                        toItem:self
-                                                                     attribute:NSLayoutAttributeRight
-                                                                    multiplier:1.0
-                                                                      constant:0];
-        [self addConstraint:self.descriptionLabelRightConstraint];
+        self.descriptionLabelRightConstraint.constant = 0;
+        self.rightImageWidthConstraint.constant = 0;
+        self.rightImageHeightConstraint.constant = 0;
     }
 }
 
